@@ -78,42 +78,12 @@
             font-size: 3rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-            opacity: 0; /* Começa invisível */
-            transform: translateY(50px); /* Começa mais para baixo */
-            animation: titleSlide 1s forwards;
-            animation-delay: 2s; /* Espera a overlay sumir */
-        }
-
-        @keyframes titleSlide {
-            0% {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         header p {
             font-size: 1.5rem;
             margin-bottom: 40px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-            opacity: 0;
-            transform: translateY(50px);
-            animation: paragraphSlide 1s forwards;
-            animation-delay: 2.2s; /* Atraso para animar após o título */
-        }
-
-        @keyframes paragraphSlide {
-            0% {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         header a {
@@ -123,26 +93,11 @@
             text-decoration: none;
             border-radius: 5px;
             font-size: 1.2rem;
-            transition: background-color 0.5s ease, box-shadow 0.3s ease;
-            opacity: 0;
-            animation: buttonSlide 1s forwards;
-            animation-delay: 2.4s; /* Atraso para animar após o parágrafo */
+            transition: background-color 0.5s ease;
         }
 
         header a:hover {
             background-color: #e68900;
-            box-shadow: 0 0 10px rgba(255, 152, 0, 0.6); /* Efeito de brilho ao passar o mouse */
-        }
-
-        @keyframes buttonSlide {
-            0% {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         section {
@@ -215,32 +170,23 @@
             <p class="date">Data da Venda: 26/10/2024</p>
             <p class="pix">PIX para doações: 47917933822</p>
             <p class="time">Horário da venda: 8h até 12h</p>
-            <p>Venha fazer parte dessa ação e ajudar a transformar a vida das crianças!</p>
+            <a href="https://criancamaisfelizrs.org.br/" target="_blank" class="button">Saiba mais sobre a instituição</a>
         </section>
 
         <footer>
-            <p>&copy; 2024 Potes dos Piás | Apoio: <a href="https://criancamaisfelizrs.org.br/" target="_blank">Criança mais feliz</a></p>
+            <p>Todos os direitos reservados © Potes dos Piás 2024</p>
+            <p><a href="https://criancamaisfelizrs.org.br/" target="_blank">Criança Mais Feliz</a></p>
         </footer>
     </div>
 
+    <!-- Script para remoção da overlay após a animação -->
     <script>
-        // Remove a overlay após a animação
         window.onload = function () {
             const overlay = document.querySelector('.overlay');
             setTimeout(() => {
-                overlay.style.display = 'none';
-            }, 1500);
+                overlay.style.display = 'none'; // Remove a overlay após a animação
+            }, 1500); // Duração da animação de overlay
         };
-
-        // Adiciona rolagem suave para o link "Saiba Mais"
-        document.querySelector('a[href="#venda"]').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector('#venda').scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
     </script>
 </body>
 </html>
-
-
