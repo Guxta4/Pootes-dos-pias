@@ -81,7 +81,7 @@
             opacity: 0; /* Começa invisível */
             transform: translateY(50px); /* Começa mais para baixo */
             animation: titleSlide 1s forwards;
-            animation-delay: 1.5s; /* Espera a overlay sumir */
+            animation-delay: 2s; /* Espera a overlay sumir */
         }
 
         @keyframes titleSlide {
@@ -99,6 +99,21 @@
             font-size: 1.5rem;
             margin-bottom: 40px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transform: translateY(50px);
+            animation: paragraphSlide 1s forwards;
+            animation-delay: 2.2s; /* Atraso para animar após o título */
+        }
+
+        @keyframes paragraphSlide {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         header a {
@@ -109,7 +124,9 @@
             border-radius: 5px;
             font-size: 1.2rem;
             transition: background-color 0.5s ease, box-shadow 0.3s ease;
-            animation: pulse 2s infinite; /* Adiciona animação de pulsar */
+            opacity: 0;
+            animation: buttonSlide 1s forwards;
+            animation-delay: 2.4s; /* Atraso para animar após o parágrafo */
         }
 
         header a:hover {
@@ -117,15 +134,14 @@
             box-shadow: 0 0 10px rgba(255, 152, 0, 0.6); /* Efeito de brilho ao passar o mouse */
         }
 
-        @keyframes pulse {
+        @keyframes buttonSlide {
             0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05); /* Cresce ligeiramente */
+                opacity: 0;
+                transform: translateY(50px);
             }
             100% {
-                transform: scale(1);
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
@@ -208,13 +224,23 @@
     </div>
 
     <script>
+        // Remove a overlay após a animação
+        window.onload = function () {
+            const overlay = document.querySelector('.overlay');
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 1500);
+        };
+
+        // Adiciona rolagem suave para o link "Saiba Mais"
         document.querySelector('a[href="#venda"]').addEventListener('click', function(e) {
             e.preventDefault();
             document.querySelector('#venda').scrollIntoView({
-                behavior: 'smooth' // Adiciona o efeito de rolagem suave
+                behavior: 'smooth'
             });
         });
     </script>
 </body>
 </html>
+
 
