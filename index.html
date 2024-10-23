@@ -78,6 +78,21 @@
             font-size: 3rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            opacity: 0; /* Começa invisível */
+            transform: translateY(50px); /* Começa mais para baixo */
+            animation: titleSlide 1s forwards;
+            animation-delay: 1.5s; /* Espera a overlay sumir */
+        }
+
+        @keyframes titleSlide {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         header p {
@@ -93,11 +108,25 @@
             text-decoration: none;
             border-radius: 5px;
             font-size: 1.2rem;
-            transition: background-color 0.5s ease;
+            transition: background-color 0.5s ease, box-shadow 0.3s ease;
+            animation: pulse 2s infinite; /* Adiciona animação de pulsar */
         }
 
         header a:hover {
             background-color: #e68900;
+            box-shadow: 0 0 10px rgba(255, 152, 0, 0.6); /* Efeito de brilho ao passar o mouse */
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05); /* Cresce ligeiramente */
+            }
+            100% {
+                transform: scale(1);
+            }
         }
 
         section {
@@ -170,23 +199,22 @@
             <p class="date">Data da Venda: 26/10/2024</p>
             <p class="pix">PIX para doações: 47917933822</p>
             <p class="time">Horário da venda: 8h até 12h</p>
-            <a href="https://criancamaisfelizrs.org.br/" target="_blank" class="button">Saiba mais sobre a instituição</a>
+            <p>Venha fazer parte dessa ação e ajudar a transformar a vida das crianças!</p>
         </section>
 
         <footer>
-            <p>Todos os direitos reservados © Potes dos Piás 2024</p>
-            <p><a href="https://criancamaisfelizrs.org.br/" target="_blank">Criança Mais Feliz</a></p>
+            <p>&copy; 2024 Potes dos Piás | Apoio: <a href="https://criancamaisfelizrs.org.br/" target="_blank">Criança mais feliz</a></p>
         </footer>
     </div>
 
-    <!-- Script para remoção da overlay após a animação -->
     <script>
-        window.onload = function () {
-            const overlay = document.querySelector('.overlay');
-            setTimeout(() => {
-                overlay.style.display = 'none'; // Remove a overlay após a animação
-            }, 1500); // Duração da animação de overlay
-        };
+        document.querySelector('a[href="#venda"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#venda').scrollIntoView({
+                behavior: 'smooth' // Adiciona o efeito de rolagem suave
+            });
+        });
     </script>
 </body>
 </html>
+
